@@ -28,7 +28,14 @@ jobs:
           cd Test
           cp ../common/*.tf .
           ls -l
-
+          
+      - name: Setup Terraform Cloud credentials
+        run: |
+          mkdir -p ~/.terraform.d
+          echo '{ "credentials": { "app.terraform.io": { "token": "${TF_API_TOKEN}" } } }' > ~/.terraform.d/credentials.tfrc.json
+        env:
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          
       # 3. Init (connects to Terraform Cloud)
       - name: Terraform Init
         working-directory: ./Test
