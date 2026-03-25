@@ -40,7 +40,9 @@ jobs:
       - name: Terraform Init
         working-directory: ./Test
         run: terraform init
-
+        env:
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          
       # 4. Validate
       - name: Terraform Validate
         working-directory: ./Test
