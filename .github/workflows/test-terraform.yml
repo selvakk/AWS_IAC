@@ -31,17 +31,21 @@ jobs:
 
       # 3. Init (connects to Terraform Cloud)
       - name: Terraform Init
+        working-directory: ./Test
         run: terraform init
 
       # 4. Validate
       - name: Terraform Validate
+        working-directory: ./Test
         run: terraform validate
 
       # 5. Plan
       - name: Terraform Plan
+        working-directory: ./Test
         run: terraform plan -no-color
 
       # 6. Apply (only on main branch)
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' 
+        if: github.ref == 'refs/heads/main'
+        working-directory: ./Test
         run: terraform apply -auto-approve
