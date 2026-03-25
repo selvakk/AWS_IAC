@@ -1,0 +1,46 @@
+name: Terraform CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    env:
+      TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+
+    steps:
+      # 1. Checkout repo
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Copy required files
+        run: |
+          cd test
+          cp ../common/*.tf .
+
+      # 3. Init (connects to Terraform Cloud)
+      - name: Terraform Init
+        run: terraform init
+
+      # 4. Validate
+      - name: Terraform Validate
+        run: terraform validate
+
+      # 5. Plan
+      - name: Terraform Plan
+        run: terraform plan -no-color
+
+      # 6. Apply (only on main branch)
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' 
+        run: terraform apply -auto-approve
