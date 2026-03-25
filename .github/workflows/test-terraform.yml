@@ -25,7 +25,7 @@ jobs:
 
       - name: Copy required files
         run: |
-          cd test
+          cd Test
           cp ../common/*.tf .
 
       # 3. Init (connects to Terraform Cloud)
