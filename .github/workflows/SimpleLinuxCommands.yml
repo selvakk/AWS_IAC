@@ -11,7 +11,7 @@ jobs:
       contents: read
 
     steps:
-      -name: Linux Commands
-       run: |
-         echo "whoami -->" 
-         whoami
+      - name: Linux Commands
+        run: |
+          echo "whoami -->" 
+          whoami
