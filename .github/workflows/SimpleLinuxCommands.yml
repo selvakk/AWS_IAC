@@ -13,6 +13,6 @@ jobs:
     steps:
       - name: Linux Commands
         run: |
-          echo "whoami -->" whoami
-          echo "Date -->" date
-          echo "Hostname: " hostname
+          echo "whoami -->" `whoami`
+          echo "Date -->" `date`
+          echo "Hostname: " `hostname`
