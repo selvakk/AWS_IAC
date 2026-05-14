@@ -1,0 +1,29 @@
+name: MultiJobWorkflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  FirstJob:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Linux Commands
+        run: |
+          echo "I am the first job"
+          
+  SecondJob:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Linux Commands
+        run: |
+          echo "I am the Second job"
+
+  ThirdJob:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Linux Commands
+        run: |
+          echo "I am the Second job"
