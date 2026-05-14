@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  terraform:
+  MyCommands:
     runs-on: ubuntu-latest
 
     permissions:
@@ -13,5 +13,6 @@ jobs:
     steps:
       - name: Linux Commands
         run: |
-          echo "whoami -->" 
-          whoami
+          echo "whoami -->" whoami
+          echo "Date -->" date
+          echo "Hostname: " hostname
